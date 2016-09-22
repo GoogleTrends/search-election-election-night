@@ -1208,6 +1208,36 @@ a:visited {
 
 .mobile-zoom-out{height: 31px;width: 40px;background: white;position: absolute;display: block;bottom: 20px;right: 20px;border: 2px solid #98989a;border-radius: 2px;font-size: 10px;line-height: 13px;text-align: center;font-weight: 500;padding-top: 6px;display: none;z-index: 1000000000000000;cursor: pointer;cursor: hand;pointer-events: all;}
 
+.trends-logo-container{
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-justify-content: center;
+  justify-content: center;
+  margin-bottom: 19px;
+}
+
+.trends-logo{
+  background-image: url(trends_logo.png);
+  background-repeat: no-repeat;
+  width: 112px;
+  margin-right: 3px;
+  height: 20px;
+  background-size: contain;
+}
+
+.trends-text{
+  font-size: 14px;
+}
+
+.trends-text a{
+  color:#333;
+}
+
+.trends-text a:visited{
+  color:#333;
+}
 
 @media (max-width: 970px) {
   .timeline-button-annotation{
@@ -1346,6 +1376,8 @@ a:visited {
   }
   .spark-item{
     /* width: 5px; */
+    -webkit-flex-grow: 1;
+    flex-grow: 1;
   }
   .map-container{
     width:100%;
@@ -1380,6 +1412,10 @@ a:visited {
 }
 
 @media (max-width: 480px) {
+  .spark-item-versus{
+    -webkit-flex-grow: 1;
+    flex-grow: 1;
+  }
   .timeline-button-annotation{
     left: -38px;
     top: 2px;
@@ -1462,14 +1498,20 @@ a:visited {
     margin-top: 46px;
     -webkit-flex-grow: 0;
     flex-grow: 0;
+    -webkit-justify-content: center;
+    justify-content: center;
   }
   .timeline-line-wrapper{
-  /* width: 10px; */
+  width: 300px;
   /* -webkit-flex-grow: 1; */
-  /* flex-grow: 1; */
+  flex-grow: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
   }
   .timeline-line-grey{
-    width: 108%;
+    width: 100%;
   }
   .col-title{
     font-size: 13px;
@@ -1481,6 +1523,9 @@ a:visited {
     order: 1;
   }
   .view-spark{
+  width: 100%;
+  -webkit-flex-grow: 1;
+  flex-grow: 1;
   }
   .pop-videos{
     display: -webkit-box;
@@ -1667,6 +1712,4 @@ a:visited {
   .tooltip-trump-views{
 
   }
-}
- }
 }
