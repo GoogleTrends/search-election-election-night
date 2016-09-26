@@ -345,7 +345,7 @@ function ready(error,
     allDates.push(+dates[date].date_id);
   }
 
-  var allDatesSearch = [20160713,20160720,20160727,20160803,20160810,20160817,20160825,20160901,20160908,20160915,20160922];
+  var allDatesSearch = [20160710,20160717,20160724,20160731,20160807,20160814,20160821,20160828,20160904,20160911,20160918];
 
   // function firstLoadClean(){
   //   for (var i = 0, len = firstLoad.length; i < len; i++) {
