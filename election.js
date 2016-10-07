@@ -345,7 +345,10 @@ function ready(error,
     allDates.push(+dates[date].date_id);
   }
 
-  var allDatesSearch = [20160710,20160717,20160724,20160731,20160807,20160814,20160821,20160828,20160904,20160911,20160918];
+  var allDatesSearch = [20160807,20160814,20160821,20160828,20160904,20160911,20160918,20160925,20161001];
+
+  var allDatesSearchMap = {20160807:0,20160814:1,20160821:2,20160828:3,20160904:4,20160911:5,20160918:6,20160925:7,20161001:8};
+
 
   // function firstLoadClean(){
   //   for (var i = 0, len = firstLoad.length; i < len; i++) {
@@ -515,14 +518,12 @@ function ready(error,
 
   var weekScale = d3.scale.quantize().domain([parseDate("20151028"),parseDate("20160828")]).range(d3.range(sparkLineCount));
 
-  var weekScaleSearch = d3.scale.quantize().domain([parseDate(JSON.stringify(allDatesSearch[0])),parseDate(JSON.stringify(allDatesSearch[allDatesSearch.length-1]))]).range(d3.range(allDatesSearch.length));
-
+  var weekScaleSearch = d3.scale.quantize().domain([allDatesSearch[0],allDatesSearch[1],allDatesSearch[2],allDatesSearch[3],allDatesSearch[4],allDatesSearch[5],allDatesSearch[6],allDatesSearch[7],allDatesSearch[8]]).range(d3.range(allDatesSearch.length));
 
 
   var dailyViewsSearch = d3.nest()
     .key(function(d){
-      var date = parseDate(d.date_id);
-      return +weekScaleSearch(date);
+      return allDatesSearchMap[+d.date_id]
     })
     .rollup(function(leaves) {
 
@@ -1290,7 +1291,7 @@ function ready(error,
         .on("mouseover",function(d,i){
 
           var parentData = d3.select(this.parentNode).datum();
-          sparkToolTip.style("left",parentData.key*29.6 + 10 +"px")
+          sparkToolTip.style("left",parentData.key*30 + 11 +"px")
           .style("bottom",function(){
             if(i==1){
               return 40+"px"
