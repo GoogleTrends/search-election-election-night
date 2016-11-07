@@ -103,10 +103,10 @@ var blues = [blueColorGen(0),blueColorGen(.125),blueColorGen(.25),blueColorGen(.
 var reds = ["#cccccc", "#fee5d9", "#fcbba1", "#fc9272", "#fb6a4a", "#ef3b2c", "#cb181d", "#99000d"];
 var blues = ["#cccccc","#eff3ff","#c6dbef","#9ecae1","#6baed6","#4292c6","#2171b5","#084594"];
 
-var blueScale = d3.scale.threshold().domain([.5,1,2,3,4,5,6,1000])
+var blueScale = d3.scale.threshold().domain([.5,1,2,2.5,3,7,10,1000])
   .range(blues);
 
-var redScale = d3.scale.threshold().domain([.5,1,2,3,4,5,6,1000])
+var redScale = d3.scale.threshold().domain([.5,1,2,2.5,3,7,10,1000])
   .range(reds);
 
 var heightScale = d3.scale.linear().domain([5,10,15,50,300]).range([2,4,5,13,52]).clamp(true);
@@ -347,18 +347,24 @@ function ready(error,
 
 
 
-  var allDatesSearch = [20160820,
-    20160827,
-    20160903,
+  var allDatesSearch = [
+    // 20160820,
+    // 20160827,
+    // 20160903,
     20160910,
     20160917,
     20160924,
     20161001,
     20161008,
-    20161015];
+    20161015,
+    20161022,
+    20161029,
+    20161105
+  ];
 
-  var allDatesSearchMap = {20160820:0,20160827:1,20160903:2,20160910:3,20160917:4,20160924:5,20161001:6,20161008:7,20161015:8};
+  // var allDatesSearchMap = {20160820:0,20160827:1,20160903:2,20160910:3,20160917:4,20160924:5,20161001:6,20161008:7,20161015:8};
 
+var allDatesSearchMap = {20160910:1,20160917:2,20160924:3,20161001:4,20161008:5,20161015:6,20161022:7,20161029:8,20161105:9};
   // function firstLoadClean(){
   //   for (var i = 0, len = firstLoad.length; i < len; i++) {
   //     var date = parseInt(firstLoad[i].date_id);
@@ -636,6 +642,8 @@ function ready(error,
     endDate = startDate;
     var startString = JSON.stringify(allDatesSearch[startDate]).substring(4);
     // var endString = JSON.stringify(allDatesSearch[endDate]).substring(4);
+
+    console.log(startDate);
 
     d3.selectAll(".spark-item-versus-item-week-text").style("font-weight",function(d,i){
       if(i==startDate){
@@ -1300,7 +1308,7 @@ function ready(error,
         .on("mouseover",function(d,i){
 
           var parentData = d3.select(this.parentNode).datum();
-          sparkToolTip.style("left",parentData.key*30 + 11 +"px")
+          sparkToolTip.style("left",parentData.key*30 - 20 +"px")
           .style("bottom",function(){
             if(i==1){
               return 40+"px"
@@ -1348,7 +1356,7 @@ function ready(error,
         })
         .text(function(d){
           var labelFormat = d3.time.format("%-m/%-d");
-          return labelFormat(parseDate(JSON.stringify(allDatesSearch[d.key])));
+          return labelFormat(parseDate(JSON.stringify(allDatesSearch[d.key-1])));
         })
         ;
 
@@ -1383,7 +1391,7 @@ function ready(error,
         .on("mouseover",function(d,i){
           d3.select(this).style("background-color","black");
 
-          sparkToolTip.style("left",d.key*29.6 + 10 +"px").style("bottom",function(){
+          sparkToolTip.style("left",d.key*30 - 20 +"px").style("bottom",function(){
             if(uploader=="Clinton"){
               return 26 + heightScale(15*d.values.clinton) + "px";
             }
@@ -1441,7 +1449,7 @@ function ready(error,
         })
         .text(function(d){
           var labelFormat = d3.time.format("%-m/%-d");
-          return labelFormat(parseDate(JSON.stringify(allDatesSearch[d.key])));
+          return labelFormat(parseDate(JSON.stringify(allDatesSearch[d.key-1])));
         })
         ;
 
@@ -1523,8 +1531,8 @@ function ready(error,
       pathColor();
       // buildVideos();
     }, 75);
-    startDate = Math.round(week);
-    endDate = Math.round(week);
+    startDate = Math.round(week-1);
+    endDate = Math.round(week-1);
 
     var startString = JSON.stringify(allDatesSearch[startDate]).substring(4);
     var endString = JSON.stringify(allDatesSearch[endDate]).substring(4);
@@ -1699,6 +1707,8 @@ function ready(error,
 
         var startString = JSON.stringify(allDatesSearch[startDate]).substring(4);
         startTitleDate.text("week of "+startString.slice(0,2)+"/"+startString.substring(2));
+
+        console.log(startString);
 
         if(allDatesSelected){
           startTitleDate.text(startString.slice(0,2)+"/"+startString.substring(2));
