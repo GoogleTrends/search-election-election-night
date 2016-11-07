@@ -359,7 +359,6 @@ function ready(error,
 
   var allDatesSearchMap = {20160820:0,20160827:1,20160903:2,20160910:3,20160917:4,20160924:5,20161001:6,20161008:7,20161015:8};
 
-
   // function firstLoadClean(){
   //   for (var i = 0, len = firstLoad.length; i < len; i++) {
   //     var date = parseInt(firstLoad[i].date_id);
