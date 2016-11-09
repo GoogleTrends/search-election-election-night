@@ -1537,7 +1537,13 @@ var allDatesSearchMap = {20160917:1,20160924:2,20161001:3,20161008:4,20161015:5,
     var startString = JSON.stringify(allDatesSearch[startDate]).substring(4);
     var endString = JSON.stringify(allDatesSearch[endDate]).substring(4);
 
-    startTitleDate.text("week of "+startString.slice(0,2)+"/"+startString.substring(2));
+    if(startDate==8){
+      startTitleDate.text("11/06 - 11/08");
+    }
+    else{
+      startTitleDate.text("week of "+startString.slice(0,2)+"/"+startString.substring(2));
+    }
+
     d3.selectAll(".range-dash").text("");
     endTitleDate.text("");
 
