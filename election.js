@@ -201,6 +201,8 @@ function ready(error,
 
   if (error) throw error;
 
+  console.log("loaded");
+
   for (var row in searchData){
     var date = "2016".concat(searchData[row].date_id);
     searchData[row].date_id = date;
