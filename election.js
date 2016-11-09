@@ -350,8 +350,7 @@ function ready(error,
   var allDatesSearch = [
     // 20160820,
     // 20160827,
-    // 20160903,
-    20160910,
+    // 20160910,
     20160917,
     20160924,
     20161001,
@@ -359,12 +358,13 @@ function ready(error,
     20161015,
     20161022,
     20161029,
-    20161105
+    20161105,
+    20161108
   ];
 
   // var allDatesSearchMap = {20160820:0,20160827:1,20160903:2,20160910:3,20160917:4,20160924:5,20161001:6,20161008:7,20161015:8};
 
-var allDatesSearchMap = {20160910:1,20160917:2,20160924:3,20161001:4,20161008:5,20161015:6,20161022:7,20161029:8,20161105:9};
+var allDatesSearchMap = {20160917:1,20160924:2,20161001:3,20161008:4,20161015:5,20161022:6,20161029:7,20161105:8,20161108:9};
   // function firstLoadClean(){
   //   for (var i = 0, len = firstLoad.length; i < len; i++) {
   //     var date = parseInt(firstLoad[i].date_id);
@@ -642,8 +642,6 @@ var allDatesSearchMap = {20160910:1,20160917:2,20160924:3,20161001:4,20161008:5,
     endDate = startDate;
     var startString = JSON.stringify(allDatesSearch[startDate]).substring(4);
     // var endString = JSON.stringify(allDatesSearch[endDate]).substring(4);
-
-    console.log(startDate);
 
     d3.selectAll(".spark-item-versus-item-week-text").style("font-weight",function(d,i){
       if(i==startDate){
@@ -1708,8 +1706,6 @@ var allDatesSearchMap = {20160910:1,20160917:2,20160924:3,20161001:4,20161008:5,
         var startString = JSON.stringify(allDatesSearch[startDate]).substring(4);
         startTitleDate.text("week of "+startString.slice(0,2)+"/"+startString.substring(2));
 
-        console.log(startString);
-
         if(allDatesSelected){
           startTitleDate.text(startString.slice(0,2)+"/"+startString.substring(2));
           var endString = JSON.stringify(allDatesSearch[endDate]).substring(4);
@@ -1811,6 +1807,7 @@ var allDatesSearchMap = {20160910:1,20160917:2,20160924:3,20161001:4,20161008:5,
   }
 
   function pathColor(){
+
     var duration = 250;
     if(mobile){
       duration = 0;
