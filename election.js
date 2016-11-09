@@ -652,7 +652,13 @@ var allDatesSearchMap = {20160917:1,20160924:2,20161001:3,20161008:4,20161015:5,
       return null;
     });
 
-    startTitleDate.text("week of "+startString.slice(0,2)+"/"+startString.substring(2));
+    if(startDate==8){
+      startTitleDate.text("11/06 - 11/08");
+    }
+    else{
+      startTitleDate.text("week of "+startString.slice(0,2)+"/"+startString.substring(2));
+    }
+
     d3.select(".range-dash").text("")
     endTitleDate.text("");
 
@@ -1712,7 +1718,13 @@ var allDatesSearchMap = {20160917:1,20160924:2,20161001:3,20161008:4,20161015:5,
         buildSpark();
 
         var startString = JSON.stringify(allDatesSearch[startDate]).substring(4);
-        startTitleDate.text("week of "+startString.slice(0,2)+"/"+startString.substring(2));
+
+        if(startDate==8){
+          startTitleDate.text("11/06 - 11/08");
+        }
+        else{
+          startTitleDate.text("week of "+startString.slice(0,2)+"/"+startString.substring(2));
+        }
 
         if(allDatesSelected){
           startTitleDate.text(startString.slice(0,2)+"/"+startString.substring(2));
